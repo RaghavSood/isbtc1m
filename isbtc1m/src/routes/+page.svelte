@@ -14,7 +14,7 @@
 
     // Convert price to millions and truncate to 2 decimal places
     const priceInMillions = (btcPrice / 1000000).toFixed(2);
-    displayPrice = `Current Price: $${priceInMillions}M`;
+    displayPrice = `1 BTC = $${priceInMillions}M`;
 
     // Update display and background based on price
     if (btcPrice >= 1000000) {
@@ -40,7 +40,7 @@
   <h1 class="text-white text-9xl font-bold">
     {displayPrice ? priceOverMillion : '?'}
   </h1>
-  <p class="text-white text-3xl mt-4">
+  <p class="text-white text-2xl mt-4">
     {displayPrice ? displayPrice : 'Loading...'}
   </p>
   <a href="/why" class="text-xs text-white hover:underline hover:decoration-dashed mt-4">
