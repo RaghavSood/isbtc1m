@@ -33,7 +33,7 @@
   }
 </script>
 
-<div class="flex flex-col items-center justify-center h-screen {backgroundClass} font-mono">
+<div class="flex flex-col items-center justify-center h-screen {backgroundClass} font-mono p-2">
   <p class="text-white text-sm">
     Is the price of Bitcoin over $1M?
   </p>

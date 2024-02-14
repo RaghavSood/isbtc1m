@@ -1,4 +1,4 @@
-<div class="flex flex-col items-center justify-center h-screen font-mono space-y-3">
+<div class="flex flex-col items-center justify-center h-screen font-mono space-y-3 p-2">
   <h1 class="text-4xl">Why?</h1>
   <p class="text-sm">Unit Bias is kicking in for Bitcoin. It's time to start thinking in terms of millions.</p>
   <blockquote class="twitter-tweet tw-align-center" data-lang="en" data-dnt="true" data-theme="dark"><p lang="en" dir="ltr">The price of <a href="https://twitter.com/search?q=%24BTC&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$BTC</a> is still less than $0.05M.</p>&mdash; Michael Saylor⚡️ (@saylor) <a href="https://twitter.com/saylor/status/1757132469130657905?ref_src=twsrc%5Etfw">February 12, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
