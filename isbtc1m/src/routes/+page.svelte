@@ -38,7 +38,7 @@
     Is the price of Bitcoin over $1M?
   </p>
   <h1 class="text-white text-9xl font-bold">
-    {displayPrice ? priceOverMillion : 'Loading...'}
+    {displayPrice ? priceOverMillion : '?'}
   </h1>
   <p class="text-white text-3xl mt-4">
     {displayPrice ? displayPrice : 'Loading...'}
