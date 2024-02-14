@@ -1,0 +1,50 @@
+<script>
+  import { onMount } from 'svelte';
+  import { browser } from '$app/environment';
+
+  let btcPrice = null;
+  let priceOverMillion = 'NO';
+  let displayPrice = '';
+  let backgroundClass = 'bg-gray-800'; // Default background
+
+  async function fetchBTCPrice() {
+    const response = await fetch('https://api.coinbase.com/v2/prices/spot?currency=USD');
+    const data = await response.json();
+    btcPrice = data.data.amount;
+
+    // Convert price to millions and truncate to 2 decimal places
+    const priceInMillions = (btcPrice / 1000000).toFixed(2);
+    displayPrice = `Current Price: $${priceInMillions}M`;
+
+    // Update display and background based on price
+    if (btcPrice >= 1000000) {
+      priceOverMillion = 'YES';
+      backgroundClass = 'bg-green-800';
+    } else {
+      priceOverMillion = 'NO';
+      backgroundClass = 'bg-red-800';
+    }
+  }
+
+  if (browser) {
+    onMount(() => {
+      fetchBTCPrice();
+    });
+  }
+</script>
+
+<div class="flex flex-col items-center justify-center h-screen {backgroundClass} font-mono">
+  <h1 class="text-white text-9xl font-bold">
+    {displayPrice ? priceOverMillion : 'Loading...'}
+  </h1>
+  <p class="text-white text-3xl mt-4">
+    {displayPrice ? displayPrice : 'Loading...'}
+  </p>
+</div>
+
+<style>
+  :global(html, body) {
+    height: 100%;
+  }
+</style>
+
