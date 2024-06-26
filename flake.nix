@@ -26,14 +26,11 @@
               modules = [
                 {
                   packages = with pkgs; [
+                    air
                     tailwindcss
                   ];
 
-                  languages.typescript.enable = true;
-                  languages.javascript = {
-                    enable = true;
-                    package = pkgs.nodejs_21;
-                  };
+                  languages.go.enable = true;
 
                   enterShell = ''
                     echo "isbtc1m shell activated!"
