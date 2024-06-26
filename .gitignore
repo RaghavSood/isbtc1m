@@ -1,2 +1,5 @@
 .devenv/
 *.sw*
+static/css/tailwind.css
+.env
+tmp/

@@ -1,0 +1,21 @@
+{{ define "content" }}
+  <div class="flex flex-col items-center justify-center flex-grow">
+    <p class="text-white text-sm">
+      Is the price of Bitcoin over $1M?
+    </p>
+    <h1 class="text-white text-9xl font-bold">
+      {{ if ge .Price 1000000.0 }}
+        YES
+      {{ else }}
+        NO
+      {{ end }}
+    </h1>
+    <p class="text-white text-2xl mt-4">
+      1 BTC = ${{ printf "%.2f" .MillionPrice }}M
+    </p>
+    <a href="/why" class="text-xs text-white hover:underline hover:decoration-dashed mt-4">
+      Why?
+    </a>
+  </div>
+{{ end }}
+

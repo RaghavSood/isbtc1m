@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ $desc := "isbtc1m.com is the trusted source to determine if BTC is worth $1 million yet or not" }}
+  {{ if .Desc }}
+    {{ $desc = .Desc }}
+  {{ end }}
+  {{ $ogimage := "https://isbtc1m.com/static/images/og.png" }}
+  {{ if .OGImage }}
+    {{ $ogimage = .OGImage }}
+  {{ end }}
+  <title>{{ .Title }} | Is BTC $1M?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="{{ .Title }}" />
+  <meta property="og:image" content="{{ $ogimage }}" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ .Title }}">
+  <meta name="twitter:image" content="{{ $ogimage }}">
+  <meta name="twitter:site" content="@isbtc1m">
+  <meta name="twitter:description" content="{{ $desc }}">
+  <meta name="description" content="{{ $desc }}">
+  <link href="/static/css/tailwind.css" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <script type="application/ld+json">
+    {
+      "@context" : "https://schema.org",
+      "@type" : "WebSite",
+      "name" : "Is BTC $1M?",
+      "url" : "https://isbtc1m.com/"
+    }
+  </script>
+</head>
+{{ $bgcolor := "bg-black" }}
+{{ if .Price }}
+  {{ $bgcolor = "bg-red-800" }}
+  {{ if ge .Price 1000000.0 }}
+      {{ $bgcolor = "bg-green-800" }}
+  {{ end }}
+{{ end }}
+<body class="{{ $bgcolor }} text-slate-400 flex flex-col items-center justify-center h-screen min-h-screen font-mono">
+  <main class="flex flex-col items-center justify-center flex-grow">
+    {{ block "content" . }}{{ end }}
+  </main>
+  {{ template "footer" . }}
+</body>
+</html>
+
