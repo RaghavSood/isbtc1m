@@ -28,6 +28,7 @@ func (s *Server) ogimage(c *gin.Context) {
 
 	// Write the image to the response
 	c.Header("Content-Type", "image/png")
+	c.Header("Content-Length", fmt.Sprintf("%d", len(img)))
 	c.Writer.Write(img)
 }
 
