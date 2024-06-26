@@ -27,6 +27,7 @@
                 {
                   packages = with pkgs; [
                     air
+                    flyctl
                     tailwindcss
                   ];
 
@@ -37,6 +38,23 @@
                   '';
                 }
               ];
+            };
+          });
+       packages = forEachSystem
+        (system:
+          let
+            pkgs = nixpkgs.legacyPackages.${system};
+          in
+          {
+            default = pkgs.buildGoModule {
+              name = "isbtc1m";
+
+              src = ./.;
+              vendorHash = "sha256-q/+ZEaHOEQ5lUHJGNN8iPBYy/IiWTvWHwuMSP+hOvaM=";
+
+              subPackages = [ "cmd/isbtc1m" ];
+
+              doCheck = false;
             };
           });
     };
