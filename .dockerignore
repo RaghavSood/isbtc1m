@@ -448,7 +448,6 @@
 # flyctl launch added from .gitignore
 **/.devenv
 **/*.sw*
-**/static/css/tailwind.css
 **/.env
 **/tmp
 fly.toml

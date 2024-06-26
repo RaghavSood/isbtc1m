@@ -54,6 +54,11 @@
 
               subPackages = [ "cmd/isbtc1m" ];
 
+              preBuild = ''
+                substituteInPlace main.go --replace-fail tailwindcss ${pkgs.tailwindcss}/bin/tailwindcss
+                go generate main.go
+              '';
+
               doCheck = false;
             };
           });
