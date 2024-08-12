@@ -40,8 +40,8 @@
       {{ $bgcolor = "bg-green-800" }}
   {{ end }}
 {{ end }}
-<body class="{{ $bgcolor }} text-slate-400 flex flex-col items-center justify-center h-screen min-h-screen font-mono">
-  <main class="flex flex-col items-center justify-center flex-grow">
+<body class="{{ $bgcolor }} text-slate-400 flex flex-col items-center justify-center min-h-screen font-mono">
+  <main class="flex flex-col items-center justify-center flex-grow w-full">
     {{ block "content" . }}{{ end }}
   </main>
   {{ template "footer" . }}
