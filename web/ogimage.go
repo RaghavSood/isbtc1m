@@ -5,6 +5,7 @@ import (
 	"image"
 	"image/color"
 	"net/http"
+	"strconv"
 	"strings"
 
 	"github.com/RaghavSood/isbtc1m/static"
@@ -62,6 +63,24 @@ func (s *Server) generateOGImage(slug string) ([]byte, error) {
 	subtitle = strings.ToUpper(parts[0])
 	description = fmt.Sprintf("1 BTC = $%s.%sM", slugParts[0], slugParts[1])
 
+	intM, err := strconv.Atoi(slugParts[0])
+	if err != nil {
+		return nil, err
+	}
+
+	intD, err := strconv.Atoi(slugParts[1])
+	if err != nil {
+		return nil, err
+	}
+
+	showMultiplier := true
+
+	if intM > 0 {
+		showMultiplier = false
+	}
+
+	multiplier := fmt.Sprintf("But it's only a %dx from here.", 1e6/(intD*10000))
+
 	templateBytes, err := static.Static.ReadFile(fmt.Sprintf("template-%s.png", parts[0]))
 	if err != nil {
 		return nil, err
@@ -107,10 +126,24 @@ func (s *Server) generateOGImage(slug string) ([]byte, error) {
 		Point:    image.Point{430, 470},
 	}
 
+	textList := []ogimage.Text{titleText, subtitleText, descriptionText}
+
+	if showMultiplier {
+		multiplierText := ogimage.Text{
+			Content:  multiplier,
+			FontData: fontBytes,
+			FontSize: 24,
+			Color:    color.White,
+			Point:    image.Point{430, 520},
+		}
+
+		textList = append(textList, multiplierText)
+	}
+
 	config := ogimage.Config{
 		Position: ogimage.TopRight,
 		Padding:  20,
-		Texts:    []ogimage.Text{titleText, subtitleText, descriptionText},
+		Texts:    textList,
 	}
 
 	imageBytes, err := ogImage.Generate(config)

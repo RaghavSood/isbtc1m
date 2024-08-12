@@ -13,6 +13,11 @@
     <p class="text-white text-2xl mt-4">
       1 BTC = ${{ printf "%.2f" .MillionPrice }}M
     </p>
+    {{ if le .Price 1000000.0 }}
+      <p class="text-white text-xs mt-2">
+        But it's only a {{ .Multiplier }}x from here
+      </p>
+    {{ end }}
     <a href="/why" class="text-xs text-white hover:underline hover:decoration-dashed mt-4">
       Why?
     </a>

@@ -59,11 +59,14 @@ func (s *Server) index(c *gin.Context) {
 		decision = "yes"
 	}
 
+	xMultiplier := 1e6 / int(price)
+
 	s.renderTemplate(c, "index.tmpl", map[string]interface{}{
 		"Title":        "Is BTC 1M?",
 		"Desc":         desc,
 		"Price":        price,
 		"MillionPrice": millionPrice,
+		"Multiplier":   xMultiplier,
 		"OGImage":      fmt.Sprintf("https://isbtc1m.com/ogimage/%s-%.2f.png", decision, millionPrice),
 	})
 }
